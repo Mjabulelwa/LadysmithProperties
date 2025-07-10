@@ -1,0 +1,40 @@
+﻿@* @model Accommodation *@
+@model IEnumerable<Accommodation>
+
+@{
+    ViewData["Title"] = "Accommodation";
+}
+
+<h2>Welcome to Ladysmith Accommodations</h2>
+
+
+<div class="row">
+    @foreach(Accommodation accommodation in Model)
+    {
+        <div class="col-md-4">
+            <div class="bg-light m-1 pb-2">
+                <img src="@Url.Content($"~/images/{accommodation.ImageUrls}")"
+                     onerror="this.onerror=null; this.src='~/images/default.jpg';" alt="@accommodation.AccommodationName" style="width: 40%">
+                <h3 class="text-right">@accommodation.AccommodationPrice.ToString("c")</h3>
+                <h3>
+                    <a asp-controller="Accommodation" asp-action="Accommodations" asp-route-id="@accommodation.AccommodationId">@accommodation.AccommodationName</a>
+                </h3>
+                <p>@accommodation.AccommodationDescription</p>
+            </div>
+
+        </div>
+
+    }
+</div>
+@* 
+@if(Model != null)
+{
+    <h2>@Model.AccommodationName</h2>
+
+     <img src="@Model.ImageUrls" alt="@Model.AccommodationName" class="img-fluid" />
+     <h3 class="text-right">@Model.AccommodationPrice.ToString("C")</h3>
+     <h3>@Model.AccommodationName</h3>
+     <h4>@Model.AccommodationDescription</h4>
+    
+} *@
+                                                                         
